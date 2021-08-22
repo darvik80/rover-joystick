@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Joystick</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="quit">Quit</string>
+
+    <string name="angle_lab">Angle:</string>
+    <string name="power_lab">Power:</string>
+    <string name="direction_lab">Direc:</string>
+    <string name="none" />
+    <string name="front_lab">Front</string>
+    <string name="front_right_lab">Front-Right</string>
+    <string name="right_lab">Right</string>
+    <string name="right_bottom_lab">Right-Bottom</string>
+    <string name="bottom_lab">Bottom</string>
+    <string name="bottom_left_lab">Left-Bottom</string>
+    <string name="left_lab">Left</string>
+    <string name="left_front_lab">Front-Left</string>
+    <string name="center_lab">Center</string>
+    <string name="rights_lab">http://zerokol.com</string>
+
+</resources>
