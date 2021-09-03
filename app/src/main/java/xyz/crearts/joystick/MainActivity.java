@@ -1,9 +1,18 @@
 package xyz.crearts.joystick;
 
+import static android.view.View.SYSTEM_UI_FLAG_FULLSCREEN;
+import static android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+import static android.view.View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
+import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView directionTextViewRight;
     private JoystickView joystickRight;
 
+    private ZeroMQService zeroMQService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
 
+        getWindow().getDecorView().setSystemUiVisibility(SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                SYSTEM_UI_FLAG_FULLSCREEN | SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                SYSTEM_UI_FLAG_LAYOUT_STABLE | SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        zeroMQService = new ZeroMQService();
+        zeroMQService.create();
+
         angleTextViewLeft = findViewById(R.id.angleTextViewLeft);
         powerTextViewLeft = findViewById(R.id.powerTextViewLeft);
         directionTextViewLeft = findViewById(R.id.directionTextViewLeft);
@@ -47,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
         joystickLeft.setOnJoystickMoveListener((angle, power, direction) -> {
             angleTextViewLeft.setText(" " + angle + "°");
             powerTextViewLeft.setText(" " + power + "%");
+
+            Joystick joystick = new Joystick(angle, power, direction);
+
+            zeroMQService.send(new Joystick(angle, power, direction));
             switch (direction) {
                 case JoystickView.FRONT:
                     directionTextViewLeft.setText(R.string.front_lab);
