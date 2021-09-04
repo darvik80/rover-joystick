@@ -12,6 +12,7 @@ public class ZeroMQService {
     private ZMQ.Socket socket;
 
     public void create() {
+        close();
         try {
             socket = context.socket(SocketType.PUB);
             if (!socket.connect("tcp://192.168.100.163:5556")) {
@@ -26,11 +27,17 @@ public class ZeroMQService {
 
     public void send(Joystick joystick) {
         try {
+
             socket.sendMore("joystick");
             socket.send(gson.toJson(joystick));
         } catch (Exception ex) {
-            socket.connect("tcp://192.168.100.163:5556");
-            socket.subscribe("joystick");
+        }
+    }
+
+    public void close() {
+        if (socket != null) {
+            socket.close();
+            socket = null;
         }
     }
 }

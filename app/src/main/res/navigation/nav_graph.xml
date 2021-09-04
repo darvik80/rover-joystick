@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="xyz.crearts.joystick.FirstFragment"
+        android:name="xyz.crearts.joystick.MainFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
     </fragment>

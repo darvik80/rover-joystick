@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import xyz.crearts.joystick.databinding.FragmentFirstBinding;
 
-public class FirstFragment extends Fragment {
+public class MainFragment extends Fragment {
 
     private FragmentFirstBinding binding;
 

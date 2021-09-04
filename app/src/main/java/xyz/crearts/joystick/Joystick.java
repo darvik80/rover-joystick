@@ -1,16 +1,13 @@
 package xyz.crearts.joystick;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Value;
+
+@Data
+@NoArgsConstructor
 public class Joystick {
-    public int angle;
-    public int power;
-    public int direction;
-
-    public Joystick(int angle, int power, int direction) {
-        this.angle = angle;
-        this.power = power;
-        this.direction = direction;
-    }
-
-    public Joystick() {
-    }
+    private JoystickAxis leftAxis;
+    private JoystickAxis rightAxis;
 }
