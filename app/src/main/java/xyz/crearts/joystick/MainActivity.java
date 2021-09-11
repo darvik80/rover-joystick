@@ -12,6 +12,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,17 +29,20 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
-    private TextView angleTextViewLeft;
-    private TextView powerTextViewLeft;
-    private TextView directionTextViewLeft;
+    //    private TextView angleTextViewLeft;
+//    private TextView powerTextViewLeft;
+//    private TextView directionTextViewLeft;
     private TextView coordTextViewLeft;
 
     private JoystickView joystickLeft;
 
-    private TextView angleTextViewRight;
-    private TextView powerTextViewRight;
-    private TextView directionTextViewRight;
+    //    private TextView angleTextViewRight;
+//    private TextView powerTextViewRight;
+//    private TextView directionTextViewRight;
     private TextView coordTextViewRight;
+
+    private EditText editTextAddr;
+    private Button btnTextAddr;
 
     private JoystickView joystickRight;
 
@@ -65,51 +71,64 @@ public class MainActivity extends AppCompatActivity {
                 SYSTEM_UI_FLAG_LAYOUT_STABLE | SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        editTextAddr = findViewById(R.id.addrTextView);
+
         Joystick joystick = new Joystick();
         zeroMQService = new ZeroMQService();
-        zeroMQService.create();
+        zeroMQService.create(editTextAddr.getText().toString());
 
-        angleTextViewLeft = findViewById(R.id.angleTextViewLeft);
-        powerTextViewLeft = findViewById(R.id.powerTextViewLeft);
-        directionTextViewLeft = findViewById(R.id.directionTextViewLeft);
+        btnTextAddr = findViewById(R.id.addrButton);
+        btnTextAddr.setOnClickListener(v -> {
+            if (zeroMQService != null) {
+                zeroMQService.close();
+            }
+            zeroMQService = new ZeroMQService();
+            zeroMQService.create(editTextAddr.getText().toString());
+            Log.i("ZMQ", "ZeroMQService: " + editTextAddr.getText().toString());
+        });
+
+//        angleTextViewLeft = findViewById(R.id.angleTextViewLeft);
+//        powerTextViewLeft = findViewById(R.id.powerTextViewLeft);
+//        directionTextViewLeft = findViewById(R.id.directionTextViewLeft);
         coordTextViewLeft = findViewById(R.id.coordTextViewLeft);
 
         joystickLeft = findViewById(R.id.joystickViewLeft);
         joystickLeft.setOnJoystickMoveListener(new JoystickView.OnJoystickMoveListener() {
             @Override
             public void onValueChanged(int angle, int power, int direction) {
-                angleTextViewLeft.setText(" " + angle + "°");
-                powerTextViewLeft.setText(" " + power + "%");
-
-                switch (direction) {
-                    case JoystickView.FRONT:
-                        directionTextViewLeft.setText(R.string.front_lab);
-                        break;
-                    case JoystickView.FRONT_RIGHT:
-                        directionTextViewLeft.setText(R.string.front_right_lab);
-                        break;
-                    case JoystickView.RIGHT:
-                        directionTextViewLeft.setText(R.string.right_lab);
-                        break;
-                    case JoystickView.RIGHT_BOTTOM:
-                        directionTextViewLeft.setText(R.string.right_bottom_lab);
-                        break;
-                    case JoystickView.BOTTOM:
-                        directionTextViewLeft.setText(R.string.bottom_lab);
-                        break;
-                    case JoystickView.BOTTOM_LEFT:
-                        directionTextViewLeft.setText(R.string.bottom_left_lab);
-                        break;
-                    case JoystickView.LEFT:
-                        directionTextViewLeft.setText(R.string.left_lab);
-                        break;
-                    case JoystickView.LEFT_FRONT:
-                        directionTextViewLeft.setText(R.string.left_front_lab);
-                        break;
-                    default:
-                        directionTextViewLeft.setText(R.string.center_lab);
-                }
+//                angleTextViewLeft.setText(" " + angle + "°");
+//                powerTextViewLeft.setText(" " + power + "%");
+//
+//                switch (direction) {
+//                    case JoystickView.FRONT:
+//                        directionTextViewLeft.setText(R.string.front_lab);
+//                        break;
+//                    case JoystickView.FRONT_RIGHT:
+//                        directionTextViewLeft.setText(R.string.front_right_lab);
+//                        break;
+//                    case JoystickView.RIGHT:
+//                        directionTextViewLeft.setText(R.string.right_lab);
+//                        break;
+//                    case JoystickView.RIGHT_BOTTOM:
+//                        directionTextViewLeft.setText(R.string.right_bottom_lab);
+//                        break;
+//                    case JoystickView.BOTTOM:
+//                        directionTextViewLeft.setText(R.string.bottom_lab);
+//                        break;
+//                    case JoystickView.BOTTOM_LEFT:
+//                        directionTextViewLeft.setText(R.string.bottom_left_lab);
+//                        break;
+//                    case JoystickView.LEFT:
+//                        directionTextViewLeft.setText(R.string.left_lab);
+//                        break;
+//                    case JoystickView.LEFT_FRONT:
+//                        directionTextViewLeft.setText(R.string.left_front_lab);
+//                        break;
+//                    default:
+//                        directionTextViewLeft.setText(R.string.center_lab);
+//                }
             }
+
             @Override
             public void onValueChanged(JoystickAxis axis) {
                 coordTextViewLeft.setText("" + axis.getAxisX() + ":" + axis.getAxisY());
@@ -119,45 +138,45 @@ public class MainActivity extends AppCompatActivity {
             }
         }, JoystickView.DEFAULT_LOOP_INTERVAL);
 
-        angleTextViewRight = findViewById(R.id.angleTextViewRight);
-        powerTextViewRight = findViewById(R.id.powerTextViewRight);
-        directionTextViewRight = findViewById(R.id.directionTextViewRight);
+//        angleTextViewRight = findViewById(R.id.angleTextViewRight);
+//        powerTextViewRight = findViewById(R.id.powerTextViewRight);
+//        directionTextViewRight = findViewById(R.id.directionTextViewRight);
         coordTextViewRight = findViewById(R.id.coordTextViewRight);
 
         joystickRight = findViewById(R.id.joystickViewRight);
         joystickRight.setOnJoystickMoveListener(new JoystickView.OnJoystickMoveListener() {
             @Override
             public void onValueChanged(int angle, int power, int direction) {
-                angleTextViewRight.setText(" " + angle + "°");
-                powerTextViewRight.setText(" " + power + "%");
-                switch (direction) {
-                    case JoystickView.FRONT:
-                        directionTextViewRight.setText(R.string.front_lab);
-                        break;
-                    case JoystickView.FRONT_RIGHT:
-                        directionTextViewRight.setText(R.string.front_right_lab);
-                        break;
-                    case JoystickView.RIGHT:
-                        directionTextViewRight.setText(R.string.right_lab);
-                        break;
-                    case JoystickView.RIGHT_BOTTOM:
-                        directionTextViewRight.setText(R.string.right_bottom_lab);
-                        break;
-                    case JoystickView.BOTTOM:
-                        directionTextViewRight.setText(R.string.bottom_lab);
-                        break;
-                    case JoystickView.BOTTOM_LEFT:
-                        directionTextViewRight.setText(R.string.bottom_left_lab);
-                        break;
-                    case JoystickView.LEFT:
-                        directionTextViewRight.setText(R.string.left_lab);
-                        break;
-                    case JoystickView.LEFT_FRONT:
-                        directionTextViewRight.setText(R.string.left_front_lab);
-                        break;
-                    default:
-                        directionTextViewRight.setText(R.string.center_lab);
-                }
+//                angleTextViewRight.setText(" " + angle + "°");
+//                powerTextViewRight.setText(" " + power + "%");
+//                switch (direction) {
+//                    case JoystickView.FRONT:
+//                        directionTextViewRight.setText(R.string.front_lab);
+//                        break;
+//                    case JoystickView.FRONT_RIGHT:
+//                        directionTextViewRight.setText(R.string.front_right_lab);
+//                        break;
+//                    case JoystickView.RIGHT:
+//                        directionTextViewRight.setText(R.string.right_lab);
+//                        break;
+//                    case JoystickView.RIGHT_BOTTOM:
+//                        directionTextViewRight.setText(R.string.right_bottom_lab);
+//                        break;
+//                    case JoystickView.BOTTOM:
+//                        directionTextViewRight.setText(R.string.bottom_lab);
+//                        break;
+//                    case JoystickView.BOTTOM_LEFT:
+//                        directionTextViewRight.setText(R.string.bottom_left_lab);
+//                        break;
+//                    case JoystickView.LEFT:
+//                        directionTextViewRight.setText(R.string.left_lab);
+//                        break;
+//                    case JoystickView.LEFT_FRONT:
+//                        directionTextViewRight.setText(R.string.left_front_lab);
+//                        break;
+//                    default:
+//                        directionTextViewRight.setText(R.string.center_lab);
+//                }
             }
 
             @Override

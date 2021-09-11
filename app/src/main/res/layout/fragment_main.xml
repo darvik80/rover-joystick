@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
+
+            <TableRow>
+
+                <TableLayout
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content">
+
+                    <TableRow>
+
+                        <LinearLayout
+                            android:id="@+id/InfoLinearLayoutLeft"
+                            tools:ignore="MissingConstraints,UselessParent">
+
+                            <TableLayout
+                                android:id="@+id/tableLayoutLeft"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                tools:ignore="UselessParent">
+
+<!--                                <TableRow-->
+<!--                                    android:id="@+id/tableAngleLeft"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content">-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/angleTextViewLabLeft"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="@string/angle_lab"-->
+<!--                                        android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/angleTextViewLeft"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="@string/none"-->
+<!--                                        android:textAppearance="?android:attr/textAppearanceMedium" />-->
+<!--                                </TableRow>-->
+
+<!--                                <TableRow-->
+<!--                                    android:id="@+id/tablePowerLeft"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content">-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/powerTextViewLabLeft"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="@string/power_lab"-->
+<!--                                        android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/powerTextViewLeft"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="@string/none"-->
+<!--                                        android:textAppearance="?android:attr/textAppearanceMedium" />-->
+<!--                                </TableRow>-->
+
+<!--                                <TableRow-->
+<!--                                    android:id="@+id/tableDirLeft"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content">-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/directionTextViewLabLeft"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="@string/direction_lab"-->
+<!--                                        android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/directionTextViewLeft"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="@string/none"-->
+<!--                                        android:textAppearance="?android:attr/textAppearanceMedium" />-->
+<!--                                </TableRow>-->
+
+                                <TableRow>
+
+                                    <TextView
+                                        android:id="@+id/coordTextViewLabLeft"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/coord"
+                                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                    <TextView
+                                        android:id="@+id/coordTextViewLeft"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text=""
+                                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                                </TableRow>
+                            </TableLayout>
+
+                        </LinearLayout>
+                    </TableRow>
+
+                    <TableRow>
+
+                        <xyz.crearts.joystick.JoystickView
+                            android:id="@+id/joystickViewLeft"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:ignore="MissingConstraints" />
+                    </TableRow>
+                </TableLayout>
+
+                <TableLayout
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent">
+
+                    <TableRow>
+
+                        <LinearLayout
+                            android:id="@+id/InfoLinearLayoutRight"
+                            tools:ignore="MissingConstraints,UselessParent">
+
+                            <TableLayout
+                                android:id="@+id/tableLayoutRight"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                tools:ignore="UselessParent">
+
+<!--                                <TableRow-->
+<!--                                    android:id="@+id/tableAngleRight"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content">-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/angleTextViewLabRight"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="@string/angle_lab"-->
+<!--                                        android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/angleTextViewRight"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="@string/none"-->
+<!--                                        android:textAppearance="?android:attr/textAppearanceMedium" />-->
+<!--                                </TableRow>-->
+
+<!--                                <TableRow-->
+<!--                                    android:id="@+id/tablePowerRight"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content">-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/powerTextViewLabRight"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="@string/power_lab"-->
+<!--                                        android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/powerTextViewRight"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="@string/none"-->
+<!--                                        android:textAppearance="?android:attr/textAppearanceMedium" />-->
+<!--                                </TableRow>-->
+
+<!--                                <TableRow-->
+<!--                                    android:id="@+id/tableDirRight"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content">-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/directionTextViewLabRight"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="@string/direction_lab"-->
+<!--                                        android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/directionTextViewRight"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="@string/none"-->
+<!--                                        android:textAppearance="?android:attr/textAppearanceMedium" />-->
+<!--                                </TableRow>-->
+
+                                <TableRow>
+
+                                    <TextView
+                                        android:id="@+id/coordTextViewLabRight"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/coord"
+                                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                    <TextView
+                                        android:id="@+id/coordTextViewRight"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text=""
+                                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                                </TableRow>
+                            </TableLayout>
+
+                        </LinearLayout>
+                    </TableRow>
+
+                    <TableRow>
+
+                        <xyz.crearts.joystick.JoystickView
+                            android:id="@+id/joystickViewRight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:ignore="MissingConstraints" />
+                    </TableRow>
+                </TableLayout>
+
+            </TableRow>
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/addrTextViewLab"
+                    android:layout_width="243dp"
+                    android:text="@string/addr_lab"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textStyle="normal|bold" />
+
+                <EditText
+                    android:id="@+id/addrTextView"
+                    android:text="@string/addr_text"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:inputType="text"/>
+
+                <Button
+                    android:id="@+id/addrButton"
+                    android:text="@string/btnConn"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,6 +25,9 @@
     <string name="left_front_lab">Front-Left</string>
     <string name="center_lab">Center</string>
     <string name="rights_lab">http://zerokol.com</string>
-    <string name="coord">Value</string>
+    <string name="coord">Coord:</string>
+    <string name="addr_lab">Address:</string>
+    <string name="addr_text">192.168.100.163</string>
+    <string name="btnConn">Connect</string>
 
 </resources>

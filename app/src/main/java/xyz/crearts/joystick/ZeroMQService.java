@@ -11,11 +11,11 @@ public class ZeroMQService {
     private final ZMQ.Context context = ZMQ.context(1);
     private ZMQ.Socket socket;
 
-    public void create() {
+    public void create(String addr) {
         close();
         try {
             socket = context.socket(SocketType.PUB);
-            if (!socket.connect("tcp://192.168.100.163:5556")) {
+            if (!socket.connect("tcp://" + addr + ":5556")) {
                 throw new RuntimeException("Test");
             }
 

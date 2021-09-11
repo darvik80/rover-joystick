@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import xyz.crearts.joystick.databinding.FragmentFirstBinding;
+import xyz.crearts.joystick.databinding.FragmentMainBinding;
 
 public class MainFragment extends Fragment {
 
-    private FragmentFirstBinding binding;
+    private FragmentMainBinding binding;
 
     @Override
     public View onCreateView(
@@ -20,7 +20,7 @@ public class MainFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentFirstBinding.inflate(inflater, container, false);
+        binding = FragmentMainBinding.inflate(inflater, container, false);
 
         return binding.getRoot();
 
